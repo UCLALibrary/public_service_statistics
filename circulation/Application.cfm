@@ -5,7 +5,11 @@
   <cfcookie name="CFTOKEN" value="#Cookie.CFTOKEN#">
 </cfif>
 
-<CFSET CircStatsDSN = "Pub_Stats_Report"> <!---"PSS_Test"--->
+<cfif FindNoCase("unitproj", CGI.SERVER_NAME) GT 0>
+	<cfset CircStatsDSN = "Pub_Stats_Report">
+<cfelse>
+	<cfset CircStatsDSN = "PSS_Test">
+</cfif>
 
 <cfif NOT IsDefined("Session.IsValid")>
 	<cflock timeout="#CreateTimeSpan(0,4,0,0)#" throwontimeout="No" name="#Session.SessionID#SessionIsValid" type="EXCLUSIVE">
