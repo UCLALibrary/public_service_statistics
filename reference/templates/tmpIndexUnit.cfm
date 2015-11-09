@@ -132,15 +132,15 @@
 			</script>
 		</cfif>
 		<cfif Text is "No">
-				<link rel=stylesheet href="http://stats.library.ucla.edu/css/main.css" type="text/css">
-				<script language="JavaScript" SRC="http://stats.library.ucla.edu/javascript/page_14.js"></script>
+				<link rel=stylesheet href="../../css/main.css" type="text/css">
+				<script language="JavaScript" SRC="../../javascript/page_14.js"></script>
 			</head>
 			<body bgcolor="#FFFFFF" topmargin="0" marginheight="0" marginwidth="0" leftmargin="0" link="#000099" vlink="#0000CC">
 				<!--begin banner-->
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr bgcolor="#003366" height="10">
 						<td colspan="2">
-							<img src="http://stats.library.ucla.edu/images/1x1.gif" height=10 border=0>
+							<img src="../../images/1x1.gif" height=10 border=0>
 						</td>
 					</tr>
 					<tr valign="middle" bgcolor="#336699" height="61">
@@ -150,7 +150,7 @@
 									document.write('<img src="' + image + '"  width="135" height="61" alt="UCLA Library">')
 								// -- End Hiding Here -->
 							</script>
-							<img src="http://stats.library.ucla.edu/images/newlogo.gif" width="265" height="61" border="0" alt="UCLA Library">
+							<img src="../../images/newlogo.gif" width="265" height="61" border="0" alt="UCLA Library">
 						</td>
 						<td align="right">
 							<!---<A HREF="index_txt.html" CLASS="toplinks">Text Only</A>&nbsp;&nbsp;--->
@@ -164,7 +164,7 @@
 			<cfinclude template="../../../library_pageincludes/banner_txt.cfm">
 		</cfif>
 		<!--begin you are here-->
-		<a href="../../index.cfm">Public Service Statistics</a> &gt;
+		<a href="../../home.cfm">Public Service Statistics</a> &gt;
 		<a href="../index.cfm">Reference</a> &gt;
 		<cfoutput>#GetUnitMaster.ParentUnit#</cfoutput>
 		<!-- end you are here -->
@@ -210,7 +210,7 @@
 						<cfelseif InputMethodID is 2>
 							<cfset PID = GetCollectionMethod.PointID>
 							<li>
-								<a href="javascript:LaunchRefForm('http://stats.library.ucla.edu/reference/refForm.cfm?UnitPointID=#UnitPointID#')">#Unit#--#ServicePoint#</a>
+								<a href="javascript:LaunchRefForm('../refForm.cfm?UnitPointID=#UnitPointID#')">#Unit#--#ServicePoint#</a>
 								<!---a href="javascript:LaunchKeyPad('#LCase(SubUnitID)#/form.cfm?InputMethod=2&UnitPointID=#UnitPointID#',
 									'<cfloop query="GetNumKeyPadLocations">
 										<cfif GetNumKeyPadLocations.PointID is PID>

@@ -6,7 +6,7 @@
 <cfparam name="PrintFormat" default = 0>
 <cfparam name="Level" default = "#FORM.Level#">
 <cfparam name="Step" default = "#FORM.Step#">
-<cfparam name="LogonID" default = "#ReplaceNoCase(REMOTE_USER, "LIBRARY\", "")#">
+<cfparam name="LogonID" default = "#Session.LogonID#">
 <cfparam name="Start1" default = "#FORM.Start1#">
 <cfparam name="End1" default = "#FORM.End1#">
 <cfparam name="Flag" default = 0>
@@ -452,7 +452,7 @@
 
 		<!--begin you are here-->
 
-		<a href="../../index.cfm">Public Service Statistics</a> &gt; <a href="../index.cfm">Reference</a> &gt; <a href="generator.cfm?Level=Account">Account-Specific Report</a> &gt;
+		<a href="../../home.cfm">Public Service Statistics</a> &gt; <a href="../index.cfm">Reference</a> &gt; <a href="generator.cfm?Level=Account">Account-Specific Report</a> &gt;
 		<cfoutput>
 			#GetAccounts.Firstname# #GetAccounts.LastName#
 		</cfoutput>

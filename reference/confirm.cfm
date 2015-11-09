@@ -28,7 +28,7 @@
 		<cfinclude template="../../library_pageincludes/banner_txt.cfm">
 	</cfif>
 <!--begin you are here-->
-<a href="../index.cfm">Public Services Statistics</a> &gt; <a href="index.cfm">Reference</a> &gt;
+<a href="../home.cfm">Public Services Statistics</a> &gt; <a href="index.cfm">Reference</a> &gt;
 	<cfoutput>
 	<cfswitch expression="#Action#">
 		<cfcase value="Insert">
@@ -116,7 +116,7 @@
 <html>
 <head>
 	<title>Ref. Stats. Data Input</title>
-<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 	<cfif DBStatus IS 1>
 		<script language="JavaScript">
 			<cfoutput>

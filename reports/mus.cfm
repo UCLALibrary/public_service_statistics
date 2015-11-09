@@ -26,7 +26,7 @@ WITH ROLLUP
 	<title>UCLA Library Public Service Statistics Report: <cfoutput>#GetUnit.Title#</cfoutput></title>
 
 <cfif PrintFormat IS "Yes">
-	<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+	<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 	</HEAD>
 	<BODY BGCOLOR="#FFFFFF">
 <cfelse>
@@ -42,7 +42,7 @@ WITH ROLLUP
 
 <!--begin you are here-->
 
-<a href="../index.cfm">Public Service Statistics</a> &gt; Statistics Summary Report for <cfoutput>#GetUnit.Title#</cfoutput>
+<a href="../home.cfm">Public Service Statistics</a> &gt; Statistics Summary Report for <cfoutput>#GetUnit.Title#</cfoutput>
 
 <!-- end you are here -->
 

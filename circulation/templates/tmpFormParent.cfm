@@ -1,7 +1,7 @@
-<cfif Find("form.cfm", PATH_INFO) IS 0>
+<!---cfif Find("form.cfm", CGI.HTTP_REFERER) IS 0>
 	<cflocation url="../index.cfm" addtoken="No">
 	<cfabort>
-</cfif>
+</cfif--->
 
 <CFPARAM NAME = "Text" DEFAULT = "No">
 <CFPARAM NAME = "ReferringURL" DEFAULT = "">
@@ -14,8 +14,8 @@
 
 
 <CFIF Find("#UnitCode#", UnitID) IS 0>
-	<CFLOCATION URL="../index.cfm" ADDTOKEN="No">
-	<CFABORT>
+	<cflocation url="../index.cfm" addtoken="No">
+	<cfabort>
 </cfif>
 
 <!-------------------------------------------------------

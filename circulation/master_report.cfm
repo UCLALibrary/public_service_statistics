@@ -331,7 +331,7 @@ ORDER BY MonthSort
 
 	<title>UCLA Library Circulation Statistics</title>
 <cfif PrintFormat IS "Yes">
-	<LINK REL=STYLESHEET HREF="http://statsdev.library.ucla.edu/css/main.css" TYPE="text/css">
+	<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 	</HEAD>
 	<BODY BGCOLOR="#FFFFFF">
 <cfelse>
@@ -348,7 +348,7 @@ ORDER BY MonthSort
 <!--begin you are here-->
 
 
-<a href="../index.cfm">Public Service Statistics</a> &gt; <a href="index.cfm">Circulation</a> &gt;
+<a href="../home.cfm">Public Service Statistics</a> &gt; <a href="index.cfm">Circulation</a> &gt;
 <cfoutput>
 <cfswitch expression="#Column#">
 	<cfcase value="Unit">

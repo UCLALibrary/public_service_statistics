@@ -110,7 +110,7 @@ ORDER BY UnitServicePoint
 <HTML>
 <HEAD>
 <TITLE>UCLA Library Reference Statistics: Facts and Figures</TITLE>
-<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+<LINK REL=STYLESHEET HREF="../../css/main.css" TYPE="text/css">
 </head>
 
 <BODY>

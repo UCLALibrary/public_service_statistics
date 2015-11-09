@@ -38,6 +38,8 @@
 	<cfset TimePer = #FORM.TimeSpent# / ListLen(FORM.TypeID)>
 </cfif>
 
+<cfset StatIDs = ArrayNew(1)>
+
 <cfloop index="theType" list="#FORM.TypeID#">
 	<cfif theType eq "02" or theType eq "03" or theType eq "04" or theType eq "05" or theType eq "06" or theType eq "08" or theType eq "00">
 		<cfset Transaction = 1>
@@ -58,7 +60,9 @@
 			<cfelse>
 				<cfprocparam type="In" cfsqltype="CF_SQL_FLOAT" dbvarname="@TimeSpent" value="0" null="No">
 			</cfif>
+			<cfprocresult name="Stat">
 		</cfstoredproc>
+		<cfset temp = ArrayAppend(StatIDs, "#Stat.StatisticID#")>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
 		</cfcatch>
@@ -74,11 +78,26 @@
 			<cfprocparam type="In" cfsqltype="CF_SQL_TIMESTAMP" dbvarname="@DateTime" value="#DateTime#" null="No">
 			<cfprocparam type="In" cfsqltype="CF_SQL_VARCHAR" dbvarname="@LogonID" value="#LogonID#" null="No">
 			<cfprocparam type="In" cfsqltype="CF_SQL_VARCHAR" dbvarname="@ReferralText" value="#FORM.ReferralText#" null="No">
+			<cfprocresult name="Referral">
 		</cfstoredproc>
+		<cfset ReferralID = #Referral.ReferralID#>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
 		</cfcatch>
 	</cftry>
+
+	<cfloop index="theStatID" array="#StatIDs#">
+		<cftry>
+			<cfstoredproc procedure="uspAddRefStatReferral" datasource="#CircStatsDSN#" returncode="No">
+				<cfprocparam type="In" cfsqltype="CF_SQL_INTEGER" dbvarname="@RefStatID" value="#theStatID#" null="No">
+				<cfprocparam type="In" cfsqltype="CF_SQL_INTEGER" dbvarname="@RefReferralID" value="#ReferralID#" null="No">
+			</cfstoredproc>
+			<cfcatch type="Database">
+				<cfset DBStatus = -1>
+			</cfcatch>
+		</cftry>
+	</cfloop>
+
 </cfif>
 
 <cfif (IsDefined("FORM.Topic") and FORM.Topic neq "") or (IsDefined("FORM.StaffFeedback") and FORM.StaffFeedback neq "")
@@ -95,11 +114,26 @@
 			<cfprocparam type="In" cfsqltype="CF_SQL_VARCHAR" dbvarname="@StaffFeedback" value="#FORM.StaffFeedback#" null="No">
 			<cfprocparam type="In" cfsqltype="CF_SQL_INTEGER" dbvarname="@PatronType" value="#FORM.PatronType#" null="No">
 			<cfprocparam type="In" cfsqltype="CF_SQL_VARCHAR" dbvarname="@PatronFeedback" value="#FORM.PatronFeedback#" null="No">
+			<cfprocresult name="Interaction">
 		</cfstoredproc>
+		<cfset InteractionID = #Interaction.InteractionID#>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
 		</cfcatch>
 	</cftry>
+
+	<cfloop index="theStatID" array="#StatIDs#">
+		<cftry>
+			<cfstoredproc procedure="uspAddRefStatInteraction" datasource="#CircStatsDSN#" returncode="No">
+				<cfprocparam type="In" cfsqltype="CF_SQL_INTEGER" dbvarname="@RefStatID" value="#theStatID#" null="No">
+				<cfprocparam type="In" cfsqltype="CF_SQL_INTEGER" dbvarname="@RefInteractionID" value="#InteractionID#" null="No">
+			</cfstoredproc>
+			<cfcatch type="Database">
+				<cfset DBStatus = -1>
+			</cfcatch>
+		</cftry>
+	</cfloop>
+
 </cfif>
 
 <cfif Transaction>

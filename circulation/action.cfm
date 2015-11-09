@@ -1,6 +1,6 @@
-<cfif Find("library.ucla.edu/circulation/form.cfm", HTTP_REFERER) IS 0 AND
-	  Find("library.ucla.edu/circulation/review.cfm", HTTP_REFERER) IS 0>
-	<cflocation url="index.cfm" addtoken="No">
+<cfif Find("circulation/form.cfm", HTTP_REFERER) IS 0 AND
+	  Find("circulation/review.cfm", HTTP_REFERER) IS 0>
+	<cflocation url="home.cfm" addtoken="No">
 	<cfabort>
 </cfif>
 
@@ -31,8 +31,9 @@
 <cfif IsDefined("Session.LogonID")>
 	<cfset LogonID = Session.LogonID>
 <cfelse>
-	<cfset LogonID = "davmoto">
+	<cfset LogonID = "unassigned">
 </cfif>
+<cfoutput><p>LogonID = #LogonID#</p></cfoutput>
 <cfset DBStatus = 1>
 
 <!--- query to get user account information for email function --->
@@ -171,6 +172,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 			</cfif>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
+			<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
 		</cfcatch>
 		</cftry>
 	</cfcase>
@@ -186,6 +188,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 			</CFSTOREDPROC>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
+			<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
 		</cfcatch>
 		</cftry>
 	</cfcase>
@@ -202,6 +205,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 			</CFSTOREDPROC>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
+			<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
 		</cfcatch>
 		</cftry>
 	</cfcase>
@@ -213,6 +217,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 			</CFSTOREDPROC>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
+			<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
 		</cfcatch>
 		</cftry>
 	</cfcase>
@@ -229,6 +234,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 			</CFSTOREDPROC>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
+			<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
 		</cfcatch>
 		</cftry>
 	</cfcase>
@@ -240,6 +246,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 			</CFSTOREDPROC>
 		<cfcatch type="Database">
 			<cfset DBStatus = -1>
+			<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
 		</cfcatch>
 		</cftry>
 	</cfcase>
@@ -255,7 +262,8 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 
 		<cfcase value="Insert">
 <!--- send email confirming the successful input --->
-			<cfmail to="#GetUserAccounts.EmailAddress#" from="webadmin@library.ucla.edu" subject="Circ. Data Input Successful">Dear #GetUserAccounts.FirstName# #GetUserAccounts.LastName#:
+			<cftry>
+            <cfmail to="#GetUserAccounts.EmailAddress#" from="webadmin@library.ucla.edu" subject="Circ. Data Input Successful">Dear #GetUserAccounts.FirstName# #GetUserAccounts.LastName#:
 
 Your circulation statistics data input was successful. The following is a transcript of your transaction.
 We recommend saving this transcript for you records.
@@ -271,36 +279,22 @@ Comment: #Comment#
 
 Executed on: #Now()#
 			</cfmail>
-		</cfcase>
-
-		<cfcase value="InsertComment">
-<!--- send email confirming the successful input --->
-			<cfmail to="#GetUserAccounts.EmailAddress#" from="webadmin@library.ucla.edu" subject="Circ. Statistics Comment Input Successful">Dear #GetUserAccounts.FirstName# #GetUserAccounts.LastName#:
-
-Your circulation statistics comment input was successful. The following is a transcript of your transaction.
-We recommend saving this transcript for you records.
-
-Comment: #Comment#
-
-Executed on: #Now()#
-			</cfmail>
-		</cfcase>
-		
-		<cfcase value="Update">
-<!--- send email confirming the successful update --->
-			<cfmail to="#GetUserAccounts.EmailAddress#" from="webadmin@library.ucla.edu" subject="Circ. Data Update Successful">Dear #GetUserAccounts.FirstName# #GetUserAccounts.LastName#:
-
-Your circulation statistics data edit was successful. The following is a transcript of your transaction.
-We recommend saving this transcript for you records.
-
-Data updated:
-
-AggregateID-------Unit-------Stat. Group-------Category-------Count-------Mo/Yr
-<cfloop query="GetUnitCategory"><CFLOOP COLLECTION="#AggregateIDValue#" ITEM="VarName"><cfif VarName IS AggregateID>#VarName#-------#Unit#-------#CircGroup#-------#Category#-------#AggregateIDValue[VarName]#-------#dataMonth#/#dataYear#
-</cfif></cfloop></cfloop>
-
-Executed on: #Now()#
-			</cfmail>
+			<cfcatch type="any">
+            	<cfset em = "#cfcatch.Message#" & "#cfcatch.Detail#">
+                <span>Error!</span>
+                <div>
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tr valign="top">
+                            <td class="first">Insert confirmation email send failure.</td>
+                        </tr>
+                        <tr valign="top">
+                            <td class="first"><cfoutput>#em#</cfoutput></td>
+                        </tr>
+                    </table>
+                </div>
+                <cfabort>
+            </cfcatch>
+            </cftry>
 		</cfcase>
 
 		<cfcase value="Delete">
@@ -485,4 +479,3 @@ Executed on: #Now()#
 <cfif CFSTOREDPROC.STATUSCODE IS NOT 0 OR DBStatus IS -1>
 	<CFLOCATION URL="confirm.cfm?Action=#Action#&Status=-1&UnitID=#UnitID#" ADDTOKEN="No">
 </cfif>
-

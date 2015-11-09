@@ -144,7 +144,7 @@
 	<head>
 		<title>UCLA Library Public Service Statistics Report: <cfoutput>#GetUnit.Unit#</cfoutput></title>
 		<cfif PrintFormat IS "Yes">
-				<link rel=STYLESHEET href="http://stats.library.ucla.edu/css/main.css" type="text/css">
+				<link rel=STYLESHEET href="../../css/main.css" type="text/css">
 			</head>
 			<body bgcolor="#FFFFFF">
 		<cfelse>
@@ -155,7 +155,7 @@
 				<cfinclude template="../../../library_pageincludes/banner_txt.cfm">
 			</cfif>
 			<!--begin you are here-->
-				<a href="../../index.cfm">Public Service Statistics</a> &gt; <a href="../index.cfm">Circulation</a> &gt; <cfoutput><a href="index.cfm">#GetUnit.Unit#</a></cfoutput> &gt; Summary Report
+				<a href="../../home.cfm">Public Service Statistics</a> &gt; <a href="../index.cfm">Circulation</a> &gt; <cfoutput><a href="index.cfm">#GetUnit.Unit#</a></cfoutput> &gt; Summary Report
 			<!-- end you are here -->
 			<cfinclude template="../../../library_pageincludes/start_content_nonav.cfm">
 		</cfif>

@@ -24,7 +24,7 @@ ORDER BY Unit
 
 <!--begin you are here-->
 
-<a href="../index.cfm">Public Service Statistics</a> &gt; Circulation
+<a href="../home.cfm">Public Service Statistics</a> &gt; Circulation
 
 <!-- end you are here -->
 
@@ -38,6 +38,24 @@ ORDER BY Unit
 <!--begin main content-->
 
 <h1>Circulation Statistics</h1>
+
+<cfif IsDefined("Session.LogonID")>
+	<cfset LogonID = Session.LogonID>
+<cfelse>
+	<cfset LogonID = "unassigned">
+</cfif>
+<cfoutput><!--LogonID = #LogonID#--></cfoutput>
+
+<cfquery name="GetUserAccounts" datasource="#CircStatsDSN#">
+SELECT *
+FROM View_CircUserUnit
+WHERE LogonID = '#LogonID#'
+</cfquery>
+<cfloop query="GetUserAccounts">
+<cfoutput>
+<!-- From query, logonid = #GetUserAccounts.LogonID#; email = #GetUserAccounts.EmailAddress# -->
+</cfoutput>
+</cfloop>
 
 <table width="300" bgcolor="#FFFF99"><tr><td class="copy">
 <strong>Have you switched to Windows XP?</strong><br>If so, read <strong><a href="../using_xp.cfm">Logging on Using Windows XP

@@ -122,17 +122,17 @@ function ShowCalendar(FormName, FieldName)
 <div id="container" style="height: 100%; width:98%">
 <div id="header" style="background-color:#DEDEDE;">
 <strong class="tblcopy"><cfoutput>#GetUnitPoint.Unit# #GetUnitPoint.ServicePoint#</cfoutput></strong>
-<span height="1" bgcolor="#FFFFFF"><img src="http://statsdev.library.ucla.edu/reference/images/1x1.gif" width="1" height="1" border="0"></span>
+<span height="1" bgcolor="#FFFFFF"><img src="images/1x1.gif" width="1" height="1" border="0"></span>
 <br/>
 <div style="background-color:#FFFFFF;">
 <a href="javascript:ShowCalendar('refForm', 'Date')">
-<img src="http://statsdev.library.ucla.edu/reference/images/calendar.gif" alt="Date selector" width="16" height="15" border="0" align="absmiddle">
+<img src="images/calendar.gif" alt="Date selector" width="16" height="15" border="0" align="absmiddle">
 </a>
 &nbsp;
 <input type="text" name="Date" value="<cfoutput>#DateFormat(Now(), "m/d/yyyy")#</cfoutput>" size="11" maxlength="11" class="form3" onClick="javascript:ShowCalendar('KeyPad', 'Date')">
 <select name="Hour" class="small">
 <cfloop index="H" from="0" to="23">
-<option value="<cfoutput>#TimeFormat(CreateTime(H, 00, 00), "H:mm:ss tt")#</cfoutput>" <cfif Hour(Now()) is H>selected</cfif> class="small"><cfoutput>#TimeFormat(CreateTime(H, 00, 00), "h tt")
+<option value="<cfoutput>#TimeFormat(CreateTime(H, 00, 00), "H:mm:ss tt")#</cfoutput>" <cfif Hour(Now()) - 2 is H>selected</cfif> class="small"><cfoutput>#TimeFormat(CreateTime(H, 00, 00), "h tt")
 #</cfoutput> hour
 </option>
 </cfloop>
@@ -238,8 +238,8 @@ Did you provide a referral to the patron?&nbsp;&nbsp;
 </cfoutput>
 </div>
 <div style="background-color: #DEDEDE;">
-Scheduled Consultation? Use <a href="http://sia.library.ucla.edu" target="_blank">SIA</a>.<br/>
-<a href="http://stats.library.ucla.edu/reference/category_definitions.cfm" target="_blank">Question Type Category Definitions and Guidelines for use</a>.<br/>
+Scheduled Consultation? Use <a href="http://h-unitproj.library.ucla.edu/sia" target="_blank">SIA</a>.<br/>
+<a href="category_definitions.cfm" target="_blank">Question Type Category Definitions and Guidelines for use</a>.<br/>
 </div>
 </div>
 </div>

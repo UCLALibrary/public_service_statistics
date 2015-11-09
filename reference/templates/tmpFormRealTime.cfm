@@ -1,7 +1,7 @@
-<cfif Find("form.cfm", PATH_INFO) is 0>
+<!---cfif Find("form.cfm", PATH_INFO) is 0>
     <cflocation url="../index.cfm" addtoken="No">
     <cfabort>
-</cfif>
+</cfif--->
 
 <cfset request = GetHttpRequestData()>
 <cfset browser = StructFind(request.headers, "User-Agent")>
@@ -134,7 +134,7 @@
 							<cfset i = i + 1>
 						</cfoutput>
 						<td bgcolor="#FFFFFF" width="1" class="small">
-							<img src="http://stats.library.ucla.edu/images/1x1.gif" width="1" height="1" border="0">
+							<img src="../../images/1x1.gif" width="1" height="1" border="0">
 						</td>
 						<td width="26" bgcolor="#DEDEDE" class="small" align="center">
 							<!--&gt;10 Min-->
@@ -196,7 +196,7 @@
 								</cfloop>
 								<!-- NOTE added next two cells -->
 								<td bgcolor="##CCCCCC">
-									<img src="http://stats.library.ucla.edu/images/1x1.gif" width="1" height="1" border="0">
+									<img src="../../images/1x1.gif" width="1" height="1" border="0">
 								</td>
 								<td bgcolor="##999999" class="small" align="center">
 									<input type="checkbox" name="#UnitPointID##TypeID#_LONG" value="1">
