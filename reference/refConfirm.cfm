@@ -2,18 +2,13 @@
 <html>
 <head>
 	<title>Ref. Stats. Data Input</title>
-<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 	<cfif DBStatus IS 1>
 		<script language="JavaScript">
 			<cfoutput>
 			   setTimeout("location.href='#ReferringURL#'",500);
 			</cfoutput>
 		</script>
-<!---
-		<cfoutput>
-		<META HTTP-EQUIV="Refresh" CONTENT="1;URL=#ReferringURL#">
-		</cfoutput>
---->
 	</cfif>
 </head>
 

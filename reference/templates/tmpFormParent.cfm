@@ -1,7 +1,7 @@
-<cfif Find("form.cfm", PATH_INFO) is 0>
+<!---cfif Find("form.cfm", PATH_INFO) is 0>
 	<cflocation url="../index.cfm" addtoken="No">
 	<cfabort>
-</cfif>
+</cfif--->
 
 <cfparam name = "Text" default = "No">
 <cfparam name = "ReferringURL" default = "">

@@ -1,4 +1,3 @@
-
 <CFHEADER NAME = "Expires" VALUE = "#Now()#">
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -6,7 +5,7 @@
 <HTML>
 <HEAD>
 	<title>Select a date</title>
-<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 </HEAD>
 
 <BODY bgcolor="#FFFFFF" TOPMARGIN="1" MARGINHEIGHT="1" MARGINWIDTH="1" LEFTMARGIN="1" LINK="#000099" VLINK="#0000CC">

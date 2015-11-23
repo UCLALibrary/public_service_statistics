@@ -1,6 +1,6 @@
 <CFPARAM NAME = "Text" DEFAULT = 0>
 <CFPARAM NAME = "Step" DEFAULT = 1>
-<cfparam name="LogonID" default = #RemoveChars(AUTH_USER, 1, Find("\", AUTH_USER))#>
+<cfparam name="LogonID" default = #Session.LogonID#>
 
 <cfif IsDefined("URL.Level")>
 	<CFPARAM NAME = "Level" DEFAULT = "#URL.Level#">
@@ -344,7 +344,7 @@ Individual Account
 
 <!--begin you are here-->
 
-<a href="../index.cfm">Public Service Statistics</a> &gt; <a href="../index.cfm">Reference</a> &gt;
+<a href="../home.cfm">Public Service Statistics</a> &gt; <a href="../index.cfm">Reference</a> &gt;
 <cfif Level IS "Library">
 Library-Wide
 <cfelseif Level IS "Unit" OR Level IS "SubUnit">

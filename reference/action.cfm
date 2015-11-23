@@ -11,7 +11,7 @@
 		<html>
 			<head>
 				<title>Ref. Stats. Session Expired!</title>
-				<link rel=stylesheet href="http://stats.library.ucla.edu/css/main.css" type="text/css">
+				<link rel=stylesheet href="../css/main.css" type="text/css">
 				<script language="JavaScript">
 					<!--
 						setTimeout('location.reload(true)',1000*60*60); // forces a reload from the server
@@ -53,7 +53,7 @@
 <cfif IsDefined("Session.LogonID")>
 	<cfset LogonID = Session.LogonID>
 <cfelse>
-	<cfset LogonID = "davmoto">
+	<cfset LogonID = "unassigned">
 </cfif>
 <cfset DBStatus = 1>
 

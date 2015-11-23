@@ -68,11 +68,11 @@ margin-bottom: 0px;
 
 <div id="header" style="background-color:#DEDEDE;">
 <strong class="tblcopy"><cfoutput>#GetUnitPoint.Unit# #GetUnitPoint.ServicePoint#</cfoutput></strong>
-<span height="1" bgcolor="#FFFFFF"><img src="http://statsdev.library.ucla.edu/reference/images/1x1.gif" width="1" height="1" border="0"></span>
+<span height="1" bgcolor="#FFFFFF"><img src="images/1x1.gif" width="1" height="1" border="0"></span>
 <br/>
 <div style="background-color:#FFFFFF;">
 <a href="javascript:ShowCalendar('refForm', 'Date')">
-<img src="http://statsdev.library.ucla.edu/reference/images/calendar.gif" alt="Date selector" width="16" height="15" border="0" align="absmiddle">
+<img src="images/calendar.gif" alt="Date selector" width="16" height="15" border="0" align="absmiddle">
 </a>
 &nbsp;
 <input type="text" name="Date" value="<cfoutput>#DateFormat(Now(), "m/d/yyyy")#</cfoutput>" size="11" maxlength="11" class="form3" onClick="javascript:ShowCalendar('KeyPad', 'Date')">
@@ -117,7 +117,7 @@ margin-bottom: 0px;
 </div>
 <div style="background-color: #DEDEDE;">
 Research Consultation? Use <a href="http://sia.library.ucla.edu">SIA</a>.<br/>
-<a href="http://stats.library.ucla.edu/reference/category_definitions.cfm" target="_blank">Question Type Category Definitions and Guidelines for use</a>.<br/>
+<a href="category_definitions.cfm" target="_blank">Question Type Category Definitions and Guidelines for use</a>.<br/>
 </div>
 </div>
 </div>

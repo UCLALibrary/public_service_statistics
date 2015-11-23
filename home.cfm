@@ -1,5 +1,10 @@
+<!---cfif IsDefined("FORM.UserName")>
+	<cflock timeout="#CreateTimeSpan(0,4,0,0)#" throwontimeout="No" name="#Session.SessionID#LogonID" type="EXCLUSIVE">
+		<cfset Session.LogonID = Trim(StripCR(FORM.UserName))>
+	</cflock>
+</cfif--->
+
 <CFPARAM NAME = "Text" DEFAULT = "No">
-<cfparam name="URL.action" default="">
 
 <html>
 <head>
@@ -54,67 +59,13 @@ Public Service Statistics
 <p>
 Welcome to UCLA Library Public Service Statistics Web site.
 </p>
-<p>
-<strong>
-    If this is your first time at the new site, click <a href="createAccount.cfm">here</a> to setup your login account
-</strong>
-</p>
-					<form action="loginExe.cfm"
-						  method="post"
-						  name="Login"
-						  id="Login">
-						  <!--onsubmit="JavaScript:return validateForm(this);"-->
-						<table border="0" cellpadding="0" cellspacing="0">
-							<tr>
-								<td></td>
-								<td colspan="2">
-									<cfif URL.action eq "deny">
-										<div class="formSectionTitleErr">Log in error! Try again.</div>
-									<cfelseif URL.action eq "nc">
-										<div class="formSectionTitleErr">This site required cookies.</div>
-									<cfelse>
-										<div class="formSectionTitle">Log In</div>
-									</cfif>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">User name</td>
-                                                                <td>&nbsp;</td>
-								<td>
-									<input name="UserName" type="text" size="15" maxlength="50">
-								</td>
-							</tr>
-							<tr>
-								<td align="right">Password</td>
-                                                                <td>&nbsp;</td>
-								<td>
-									<input name="Password" type="password" size="15" maxlength="50">
-								</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td align="right">
-									<input type="submit" class="mainControl" value="Log In">
-								</td>
-								<td valign="top">
-									&nbsp;
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2"></td>
-								<td valign="top">
-									<a href="getPassword.cfm">Forgot your password?</a><br>
-								</td>
-							</tr>
-						</table>
-					</form>
 
-<!--h2>Go to:</h2>
+<h2>Go to:</h2>
 
 <ul class="large">
 <li class="large"><a href="circulation/index.cfm">Circulation and other public services statistics</a></li>
 <li class="large"><a href="reference/index.cfm">Reference statistics</a></li>
-</ul-->
+</ul>
 
 
 <cfif Text IS "No">
@@ -124,4 +75,5 @@ Welcome to UCLA Library Public Service Statistics Web site.
 <cfif Text IS "Yes">
 	<CFINCLUDE TEMPLATE="../library_pageincludes/footer_txt.cfm">
 </cfif>
+
 

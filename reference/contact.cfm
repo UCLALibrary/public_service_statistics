@@ -13,7 +13,7 @@ WHERE LogonID = '<cfoutput>#LogonID#</cfoutput>'
 <html>
 <head>
 	<title>UCLA Library Reference Statistics User Contact</title>
-	<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+	<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 <script language="JavaScript">
 <!--
 function CloseWindow() {

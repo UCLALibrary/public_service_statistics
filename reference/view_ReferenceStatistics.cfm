@@ -30,7 +30,7 @@ ORDER BY Total DESC
 <HTML>
 <HEAD>
 	<TITLE>view_ReferenceStatistics</TITLE>
-<LINK REL=STYLESHEET HREF="http://stats.library.ucla.edu/css/main.css" TYPE="text/css">
+<LINK REL=STYLESHEET HREF="../css/main.css" TYPE="text/css">
 </HEAD>
 
 <BODY>
