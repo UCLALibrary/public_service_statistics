@@ -13,6 +13,8 @@ SELECT DISTINCT SUBSTRING(UnitID, 1, 3) AS ParentUnitID,
        WHEN SUBSTRING(UnitID, 1, 3) = 'SEL' THEN 'SEL'
        WHEN SUBSTRING(UnitID, 1, 3) = 'SRL' THEN 'SRLF'
        WHEN SUBSTRING(UnitID, 1, 3) = 'YRL' THEN 'YRL'
+       WHEN SUBSTRING(UnitID, 1, 3) = 'DLP' THEN 'DLP'
+       WHEN SUBSTRING(UnitID, 1, 3) = 'SSD' THEN 'Social Science Data Archive'
        ELSE NULL
        END AS "ParentUnit"
 FROM RefUnit
@@ -42,6 +44,8 @@ SELECT UnitID,
        WHEN SUBSTRING(UnitID, 1, 3) = 'SEL' THEN 'SEL'
        WHEN SUBSTRING(UnitID, 1, 3) = 'SRL' THEN 'SRLF'
        WHEN SUBSTRING(UnitID, 1, 3) = 'YRL' THEN 'YRL'
+       WHEN SUBSTRING(UnitID, 1, 3) = 'DLP' THEN 'DLP'
+       WHEN SUBSTRING(UnitID, 1, 3) = 'SSD' THEN 'Social Science Data Archive'
        ELSE NULL
        END AS "ParentUnit",
        CASE

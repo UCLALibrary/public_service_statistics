@@ -101,7 +101,8 @@
 </cfif>
 
 <cfif (IsDefined("FORM.Topic") and FORM.Topic neq "") or (IsDefined("FORM.StaffFeedback") and FORM.StaffFeedback neq "")
-      or (IsDefined("FORM.PatronFeedback") and FORM.PatronFeedback neq "") or (IsDefined("FORM.DepartmentID") and FORM.DepartmentID neq "0")>
+      or (IsDefined("FORM.PatronFeedback") and FORM.PatronFeedback neq "") or (IsDefined("FORM.DepartmentID") and FORM.DepartmentID neq "0")
+      or (IsDefined("FORM.PatronType") and FORM.PatronFeedback neq "7")>
 	<cftry>
 		<cfstoredproc procedure="uspAddRefInteractions" datasource="#CircStatsDSN#" returncode="Yes">
 			<cfprocparam type="In" cfsqltype="CF_SQL_INTEGER" dbvarname="@dataMonth" value="#dataMonth#" null="No">

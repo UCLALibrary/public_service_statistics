@@ -26,6 +26,8 @@
 			WHEN SUBSTRING(UnitID, 1, 3) = 'SEL' THEN 'Science & Engineering Library'
 			WHEN SUBSTRING(UnitID, 1, 3) = 'SRL' THEN 'SRLF'
 			WHEN SUBSTRING(UnitID, 1, 3) = 'YRL' THEN 'Young Research Library'
+			WHEN SUBSTRING(UnitID, 1, 3) = 'DLP' THEN 'Digital Library Program'
+            WHEN SUBSTRING(UnitID, 1, 3) = 'SSD' THEN 'Social Science Data Archive'
 			ELSE NULL
 		END AS "ParentUnit"
 	FROM
