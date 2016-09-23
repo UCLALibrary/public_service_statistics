@@ -65,6 +65,7 @@ Welcome to UCLA Library Public Service Statistics Web site.
 <ul class="large">
 <li class="large"><a href="circulation/index.cfm">Circulation and other public services statistics</a></li>
 <li class="large"><a href="reference/index.cfm">Reference statistics</a></li>
+<li class="large"><a href="export/index.cfm">Export data</a></li>
 </ul>
 
 
